@@ -1,9 +1,11 @@
 package com.developia.mvcbasic.repository;
 
 import com.developia.mvcbasic.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
     /**
      * 동시성 문제가 고려되어 있지 않음, 실무에서는 ConcurrentHashMap, AtomicLong 사용 고려
@@ -35,7 +37,7 @@ public class MemoryMemberRepository implements MemberRepository {
         return new ArrayList<>(store.values());
     }
 
-    public void clearStore(){
+    public void clearStore() {
         store.clear();
     }
 }

@@ -1,6 +1,7 @@
 package com.developia.mvcbasic;
 
 import com.developia.mvcbasic.repository.JdbcMemberRepository;
+import com.developia.mvcbasic.repository.JdbcTemplateMemberRepository;
 import com.developia.mvcbasic.repository.MemberRepository;
 import com.developia.mvcbasic.repository.MemoryMemberRepository;
 import com.developia.mvcbasic.service.MemberService;
@@ -28,6 +29,7 @@ public class SpringConfig {
     @Bean
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+//        return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }

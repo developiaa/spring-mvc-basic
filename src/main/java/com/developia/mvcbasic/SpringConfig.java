@@ -1,13 +1,11 @@
 package com.developia.mvcbasic;
 
-import com.developia.mvcbasic.repository.JdbcMemberRepository;
-import com.developia.mvcbasic.repository.JdbcTemplateMemberRepository;
-import com.developia.mvcbasic.repository.MemberRepository;
-import com.developia.mvcbasic.repository.MemoryMemberRepository;
+import com.developia.mvcbasic.repository.*;
 import com.developia.mvcbasic.service.MemberService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 
 // 직접 스프링 빈 객체로 등록하는 방법, @Service, @Repository와 동일
@@ -15,9 +13,11 @@ import javax.sql.DataSource;
 public class SpringConfig {
 
     private final DataSource dataSource;
+    private EntityManager em;
 
-    public SpringConfig(DataSource dataSource) {
+    public SpringConfig(DataSource dataSource, EntityManager em) {
         this.dataSource = dataSource;
+        this.em = em;
     }
 
 
@@ -30,6 +30,7 @@ public class SpringConfig {
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em);
     }
 }

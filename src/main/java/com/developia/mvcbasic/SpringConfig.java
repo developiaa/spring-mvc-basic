@@ -1,5 +1,6 @@
 package com.developia.mvcbasic;
 
+import com.developia.mvcbasic.aop.TimeTraceAop;
 import com.developia.mvcbasic.repository.*;
 import com.developia.mvcbasic.service.MemberService;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +29,12 @@ public class SpringConfig {
     public MemberService memberService() {
         return new MemberService(memberRepository);
     }
+
+//    @Bean
+//    public TimeTraceAop timeTraceAop(){
+//        return new TimeTraceAop();
+//    }
+
 
 //    @Bean
 //    public MemberRepository memberRepository() {
